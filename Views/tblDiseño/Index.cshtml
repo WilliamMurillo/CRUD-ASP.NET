@@ -1,0 +1,112 @@
+﻿@model IEnumerable<ASP.NETCRUD.Models.tblDiseño>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.imagen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.talla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellido)
+        </th>
+        <th></th>
+    </tr>
+
+        @foreach (var item in Model)
+        {
+            var i = item.idDiseño;
+            <tr>
+                <td>
+
+                    <div style="float:left;margin-right:20px">
+
+                        <img width="75" height="75" src="@Url.Action("convertir","tblDiseño",new { id = i }) " />
+
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.talla)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.marca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.apellido)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idDiseño }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.idDiseño }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idDiseño })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+@foreach (var item in Model)
+{
+    var i = item.idDiseño;
+    <div class="col-lg-4">
+        <div class="panel panel-default pane">
+            <div class="panel-heading">
+                @item.descripcion
+            </div>
+            <div class="panel-body">
+                <img class="img-responsive" src="@Url.Action("convertir","tblDiseño",new { id = i }) " />
+
+                @Html.ActionLink("Edit", "Edit", new { id = item.idDiseño }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idDiseño }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idDiseño })
+
+            </div>
+
+        </div>
+
+    </div>
+}
